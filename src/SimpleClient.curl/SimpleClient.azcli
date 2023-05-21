@@ -1,0 +1,30 @@
+################################################
+# Environment is set during environment creation
+# Please have a look to ./src/CreateEnv/CreateEnv.azcli
+# If you don't use the Azure cli script to create the environment 
+# please add your values here
+# Example AZURE_OPENAI_ENDPOINT: "https://southcentralus.api.cognitive.microsoft.com/"
+# Example AZURE_OPENAI_API_KEY: "5a5477c4cdea4999ab0ca675259e3530"
+# Example AZURE_OPENAI_ENDPOINT: "gpt35turbo-deployment"
+################################################
+$apiKey = $ENV:AZURE_OPENAI_API_KEY
+$modelDeploymentName = $ENV:AZURE_OPENAI_DEPLOYMENTNAME
+$url = "$ENV:AZURE_OPENAI_ENDPOINT" + "openai/deployments/$modelDeploymentName/completions?api-version=2023-03-15-preview"
+
+$data = @"
+{
+  "prompt": "You are a tool which extracts personal identifiable information (PII) from data provided to you. \nIf you are unsure if there\u0027s PII in the data answer with \u0022The provided dataset needs checking\u0022.\nDo not invent additional information.\nDo not include potential PII information in questions you add to your response.\nExample 1:\nInput: Susanne is a power user and works daily 8 hours with the system\nResponse: xx is a power user and works daily 8 hours with the system\n\nExample 2:\nInput: Charles has used Outlook 15 minutes yesterday\nResponse: xx has used Outlook 15 minutes yesterday\n\nExample 3:\nInput: Robert is driving a car at high speed\nResponse: xx is driving a car at high speed\n\nExample 4:\nInput: Jon has an invitation to a restaurant\nResponse: xx has an invitation to a restaurant\n\nExample 5:\nInput: Olivia is running fast during the competition\nResponse: xx is running fast during the competition\n\n'Ashley has bought a news paper at the airport'",
+  "max_tokens":150,
+  "temperature":0.7,
+  "top_p":0.95,
+  "stop":"\n",
+  "presence_penalty":0,
+  "frequency_penalty":0
+}
+"@
+
+curl $url `
+    -H "Content-Type: $contentType" `
+    -H "api-key: $apiKey" `
+    -d $data
+

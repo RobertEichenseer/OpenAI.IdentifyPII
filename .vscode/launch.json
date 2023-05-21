@@ -1,0 +1,47 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SDK Simple Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build SDK",
+            "program": "${workspaceFolder}/src/SimpleClient.Net/bin/Debug/net7.0/SimpleClient.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/SimpleClient.Net",
+            "console": "internalConsole",
+            "stopAtEntry": false, 
+            "env": {
+                "AZURE_OPENAI_API_KEY": "5a5477c4cdea4624ab0ca675259e3530",
+                "AZURE_OPENAI_ENDPOINT": "https://southcentralus.api.cognitive.microsoft.com/",
+                "AZURE_OPENAI_DEPLOYMENTNAME": "gpt35turbo-deployment", 
+                "SIMPLECLIENT_PROMPTFILE": "..\\Prompts\\PII.json"
+            }
+        },
+        {
+            "name": "httpclient Simple Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build HttpClient",
+            "program": "${workspaceFolder}/src/SimpleClient.Net.HttpClient/bin/Debug/net7.0/SimpleClient.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/SimpleClient.Net.HttpClient",
+            "console": "internalConsole",
+            "stopAtEntry": false, 
+            "env": {
+                "AZURE_OPENAI_API_KEY": "5a5477c4cdea4624ab0ca675259e3530",
+                "AZURE_OPENAI_ENDPOINT": "https://southcentralus.api.cognitive.microsoft.com/",
+                "AZURE_OPENAI_DEPLOYMENTNAME": "gpt35turbo-deployment", 
+                "SIMPLECLIENT_PROMPTFILE": "..\\Prompts\\PII.json"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
