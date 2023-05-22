@@ -1,9 +1,0 @@
-{
-    "prompt": "You are a tool which can tell jokes. Please tell a funny joke. Susi was",
-    "max_tokens":800,
-    "temperature":0.7,
-    "top_p":0.95,
-    "stop":["\n"],
-    "presence_penalty":0,
-    "frequency_penalty":0
-}
