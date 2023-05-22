@@ -27,7 +27,7 @@ class Main
         var payload = new { 
             prompt = "You are a tool which extracts personal identifiable information (PII) from data provided to you. \nIf you are unsure if there\u0027s PII in the data answer with \u0022The provided dataset needs checking\u0022.\nDo not invent additional information.\nDo not include potential PII information in questions you add to your response.\nExample 1:\nInput: Susanne is a power user and works daily 8 hours with the system\nResponse: xx is a power user and works daily 8 hours with the system\n\nExample 2:\nInput: Charles has used Outlook 15 minutes yesterday\nResponse: xx has used Outlook 15 minutes yesterday\n\nExample 3:\nInput: Robert is driving a car at high speed\nResponse: xx is driving a car at high speed\n\nExample 4:\nInput: Jon has an invitation to a restaurant\nResponse: xx has an invitation to a restaurant\n\nExample 5:\nInput: Olivia is running fast during the competition\nResponse: xx is running fast during the competition\n\n'Ashley has bought a news paper at the airport'",
             max_tokens = 150,
-            temperature = (float)0.7,
+            temperature = (float)0,
             stop="\n",
             presence_penalty=(float)0,
             frequency_penalty=(float)0 
